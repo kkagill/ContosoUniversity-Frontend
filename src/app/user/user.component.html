@@ -1,0 +1,56 @@
+<div class="jumbotron">
+  <h2>User Profile</h2> 
+  <hr />
+  <br />
+  <form #editUserForm="ngForm" novalidate *ngIf="selectedUserLoaded">
+      <div class="form-group">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="col-md-6">
+                      <label class="control-label">First Name</label>
+                      <input type="text" 
+                             class="form-control" 
+                             id="firstName" 
+                             required 
+                             maxlength="50" 
+                             [(ngModel)]="userProfile.firstName" 
+                             name="firstName" 
+                             #firstName="ngModel">
+                      <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+                          <div [hidden]="!firstName.errors.required">
+                              First Name is required!
+                          </div>                                  
+                          <div [hidden]="!firstName.errors.maxlength">
+                              First Name cannot be more than 50 characters long.
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <label class="control-label">Last Name</label>
+                      <input type="text" 
+                             class="form-control" 
+                             id="lastName" 
+                             required 
+                             maxlength="50" 
+                             [(ngModel)]="userProfile.lastName" 
+                             name="lastName" 
+                             #lastName="ngModel">
+                      <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+                          <div [hidden]="!lastName.errors.required">
+                              Last Name is required!
+                          </div>                                     
+                          <div [hidden]="!lastName.errors.maxlength">
+                              Last Name cannot be more than 50 characters long.
+                          </div>
+                      </div>
+                  </div>
+              </div>                   
+          </div>
+          <br />       
+      </div>                    
+      <button type="submit" 
+              class="btn btn-default" 
+              [disabled]="!editUserForm.form.valid"
+              (click)="updateUserProfile(editUserForm)">Update</button>
+  </form>  
+</div>

@@ -1,0 +1,88 @@
+<ng2-toasty [position]="'top-right'"></ng2-toasty>
+<nav class="navbar navbar-default navbar-custom">
+    <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+        <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a [routerLink]="['/']" class="navbar-brand">Contoso University</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li routerLinkActive="active">
+                <a *ngIf="authService.isAuthenticated()" [routerLink]="['/students']" (click)="setTitle('Students')">
+                    <span class='glyphicon glyphicon-star-empty'></span>
+                    Students
+                </a>
+            </li>
+            <!-- Need routerLinkActiveOptions since routing to vehicles is the same -->
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a *ngIf="authService.isAuthenticated()" routerLink="/courses" (click)="setTitle('Courses')">
+                    <span class='glyphicon glyphicon-th-list'></span>
+                     Courses
+                </a>
+            </li>
+            <li routerLinkActive="active">
+                <a *ngIf="authService.isAuthenticated()" routerLink="/instructors" (click)="setTitle('Instructors')">
+                    <span class='glyphicon glyphicon-education'></span>
+                    Instructors
+                </a>    
+            </li>
+            <!-- <li routerLinkActive="active">
+                <a *ngIf="authService.isAuthenticated() && authService.isAdmin()" routerLink="/admin" (click)="setTitle('Admin')">
+                    <span class='glyphicon glyphicon-user'></span>
+                    Admin
+                </a>
+            </li> -->
+            <li class="dropdown" routerLinkActive="active">
+                <a *ngIf="authService.isAuthenticated() && authService.isAdmin()"                                       
+                    class="dropdown-toggle" 
+                    data-toggle="dropdown">
+                    <span class='glyphicon glyphicon-user'></span>
+                    Admin
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li routerLinkActive="active">
+                      <a routerLink="/admin" (click)="setTitle('Manage Users')">Manage Users</a>
+                  </li>
+                  <li routerLinkActive="active">
+                      <a routerLink="/register" (click)="setTitle('Create Account')">Create Account</a>
+                  </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <ng-template [ngIf]="!authService.isAuthenticated()">
+                <!-- <li routerLinkActive="active">
+                    <a routerLink="/register" (click)="setTitle('Register')">
+                        <span class='glyphicon glyphicon-user'></span>
+                        Register
+                    </a>
+                </li> -->
+                <li routerLinkActive="active">
+                    <a routerLink="/login" (click)="setTitle('Login')">
+                        <span class='glyphicon glyphicon-log-in'></span>
+                        Login
+                    </a>
+                </li>
+            </ng-template>
+            <li routerLinkActive="active" *ngIf="authService.isAuthenticated() && authService.isAdmin() == false">
+                <a routerLink="/user" (click)="setTitle('My Account')">
+                    <span class='glyphicon glyphicon-user'></span>
+                    My Account
+                </a>
+            </li>
+            <li>
+                <a (click)="onLogout()" *ngIf="authService.isAuthenticated()">
+                    <span class='glyphicon glyphicon-log-out'></span>
+                    Logout
+                </a>
+            </li>
+        </ul>
+        </div>
+    </div>
+</nav>

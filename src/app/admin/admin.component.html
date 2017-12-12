@@ -1,0 +1,31 @@
+<h4>All Users</h4>
+<br /><br />
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th></th>
+                <th></th>              
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.userName}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>         
+                <td *ngIf="user.lockoutEnd == null">
+                    <a class="btn btn-danger" (click)="enableLockOut(user.userName)">
+                      Enable Lockout
+                    </a>
+                </td>
+                <td *ngIf="user.lockoutEnd != null">
+                    <a class="btn btn-info" (click)="disableLockOut(user.userName)">
+                      Disable Lockout
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>

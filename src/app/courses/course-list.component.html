@@ -1,0 +1,41 @@
+<button class="btn btn-default" (click)="createCourseModal.openModal()">
+    <i class="fa fa-plus" aria-hidden="true"></i> Add Course
+</button>
+<br /><br />
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Credits</th>
+                <th>Department</th>
+                <th></th>
+                <th></th>              
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let course of courses">
+                <td>{{course.courseID}}</td>
+                <td>{{course.title}}</td>
+                <td>{{course.credits}}</td>
+                <td>{{course.department}}</td>             
+                <td>
+                    <a class="btn btn-info" (click)="editCourseModal.openModal(course.courseID)">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="removeCourse(course)">
+                        <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                    </button>
+                </td> 
+            </tr>
+        </tbody>
+    </table>
+ 
+    <pagination [boundaryLinks]="true" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" class="pagination-sm"
+        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged($event)"></pagination>
+ </div>
+
+ <createCourse-modal [course]="course" [departments]="departments" (courseCreated)="loadCourses();" #createCourseModal></createCourse-modal> 
+ <editCourse-modal [departments]="departments" (loadCourse)="loadDepartments();" (courseUpdated)="loadCourses();" #editCourseModal></editCourse-modal> 

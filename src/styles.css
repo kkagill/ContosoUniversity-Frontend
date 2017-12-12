@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    color: #0C2E2B;
+  }
+  a {
+    cursor: pointer;
+  }
+  .page {
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }

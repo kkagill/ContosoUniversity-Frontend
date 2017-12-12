@@ -1,0 +1,47 @@
+<button class="btn btn-default" (click)="createStudentModal.openModal()">
+        <i class="fa fa-plus" aria-hidden="true"></i> Add Student
+</button>
+<br /><br />
+<div>
+   <table class="table table-hover">
+       <thead>
+           <tr>
+               <th>ID</th>
+               <th>First Name</th>
+               <th>Last Name</th>
+               <th>Enrollment Date</th>
+               <th></th>
+               <th></th>
+               <th></th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let student of students">
+               <td>{{student.id}}</td>
+               <td>{{student.firstMidName}}</td>
+               <td>{{student.lastName}}</td>
+               <td>{{student.enrollmentDate | dateFormat | date:'medium'}}</td>
+               <td>
+                   <button class="btn btn-primary" (click)="detailStudentModal.openModal(student.id)"> 
+                   <i class="fa fa-info-circle" aria-hidden="true"></i> Details</button>
+               </td> 
+               <td>
+                   <a class="btn btn-info" (click)="editStudentModal.openModal(student.id)">
+                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+               </td>
+               <td>
+                   <button class="btn btn-danger" (click)="removeStudent(student)">
+                       <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                   </button>
+               </td> 
+           </tr>
+       </tbody>
+   </table>
+
+   <pagination [boundaryLinks]="true" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" class="pagination-sm"
+       previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged($event)"></pagination>
+</div>
+
+<createStudent-modal [student]="student" (studentCreated)="loadStudents();" #createStudentModal></createStudent-modal> 
+<detailStudent-modal #detailStudentModal></detailStudent-modal>
+<editStudent-modal (studentUpdated)="loadStudents();" #editStudentModal></editStudent-modal>

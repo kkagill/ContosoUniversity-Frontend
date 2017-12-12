@@ -1,0 +1,53 @@
+<button class="btn btn-default" (click)="createInstructorModal.openModal()">
+        <i class="fa fa-plus" aria-hidden="true"></i> Add Instructor
+</button>
+<br /><br />
+<div>
+   <table class="table table-hover">
+       <thead>
+           <tr>
+               <th>Last Name</th>
+               <th>First Name</th>
+               <th>Hire Date</th>
+               <th>Office</th>
+               <th>Courses</th>
+               <th></th>
+               <th></th>
+               <th></th>
+           </tr>
+       </thead>
+       <tbody>
+           <tr *ngFor="let instructor of instructors">
+               <td>{{instructor.lastName}}</td>
+               <td>{{instructor.firstMidName}}</td>
+               <td>{{instructor.hireDate | dateFormat | date:'medium'}}</td>
+               <td>{{instructor.office}}</td>
+               <td>
+                   <span *ngFor="let course of instructor.courses">
+                        {{course.courseID}}: {{course.title}} <br />
+                    </span>
+               </td>
+               <td>
+                   <button class="btn btn-primary" (click)="detailInstructorModal.openModal(instructor.id)"> 
+                   <i class="fa fa-info-circle" aria-hidden="true"></i> Details</button>
+               </td> 
+               <td>
+                   <a class="btn btn-info" (click)="editInstructorModal.openModal(instructor.id)">
+                   <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+               </td>
+               <td>
+                   <button class="btn btn-danger" (click)="removeInstructor(instructor)">
+                       <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                   </button>
+               </td> 
+           </tr>
+       </tbody>
+   </table>
+
+   <pagination [boundaryLinks]="true" [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" [(ngModel)]="currentPage" class="pagination-sm"
+       previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;" (pageChanged)="pageChanged($event)"></pagination>
+</div>
+
+<createInstructor-modal [instructor]="instructor" (instructorCreated)="loadInstructors();" #createInstructorModal></createInstructor-modal> 
+<detailInstructor-modal #detailInstructorModal></detailInstructor-modal>
+<editInstructor-modal (instructorUpdated)="loadInstructors();" #editInstructorModal></editInstructor-modal>
