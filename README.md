@@ -4,7 +4,7 @@
 - CRUD, Modals, Pagination, Animation, etc
 - This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
-Referenced [chsakell](https://chsakell.com/2016/06/27/angular-2-crud-modals-animations-pagination-datetimepicker/)'s angular 4 best practice, and [Robert Dyball](https://www.codeproject.com/Articles/1172349/SPA-using-ASP-Net-Core-plus-Angular-part4)'s authentication using JWT and OpenIdDict. 
+Referenced [chsakell](https://chsakell.com/2016/06/27/angular-2-crud-modals-animations-pagination-datetimepicker/)'s Angular 4 best practice, and [Robert Dyball](https://www.codeproject.com/Articles/1172349/SPA-using-ASP-Net-Core-plus-Angular-part4)'s authentication using JWT and OpenIdDict. 
 
 ## Installation
 
