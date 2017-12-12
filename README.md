@@ -1,27 +1,27 @@
 # ContosoUniversity.SPA
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+- Angular 5 & Typescript
+- CRUD, Modals, Pagination, Animation, etc
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
-## Development server
+Referenced [chsakell](https://chsakell.com/2016/06/27/angular-2-crud-modals-animations-pagination-datetimepicker/)'s angular 4 best practice, and [Robert Dyball](https://www.codeproject.com/Articles/1172349/SPA-using-ASP-Net-Core-plus-Angular-part4)'s authentication using JWT and OpenIdDict. 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+1. Clone or download this project
+2. Download [Visual Studio Code](https://code.visualstudio.com/) 
+3. Navigate to File - Open Folder and open this project. 
+4. Open Terminal (Ctrl + `) and run 'ng serve' for a dev server. 
+5. Navigate to 'http://localhost:4200/'
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Login
 
-## Build
+There are two roles: Admin & User. Each role has different functionalities. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+1. Admin account
+- username: admin@gmail.com
+- password: P@$$w0rd
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+2. User account
+- username: user@gmail.com
+- password: P@$$w0rd
