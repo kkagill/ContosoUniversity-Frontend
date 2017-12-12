@@ -2,15 +2,37 @@ import { ConfigService } from './../shared/utils/config.service';
 import { NotificationService } from './../shared/utils/notification.service';
 import { IApplicationUser } from './../shared/interfaces';
 import { DataService } from './../shared/services/data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, trigger, state, style, transition, animate } from '@angular/core';
 
 @Component({
   selector: 'app-admin',
-  templateUrl: './admin.component.html'
+  templateUrl: './admin.component.html',
+  animations: [
+    trigger('easeInOut', [
+      transition(':enter', [
+        style({
+          opacity: 0
+        }),
+        animate("1s ease-in-out", style({
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1
+        }),
+        animate("1s ease-in-out", style({
+          opacity: 0
+        }))
+      ])
+    ])
+  ]
 })
+
 export class AdminComponent implements OnInit {
   users: IApplicationUser[];
   apiHost: string;
+  show: boolean = false;
 
   constructor(private dataService: DataService,
               private notificationService: NotificationService,
@@ -19,6 +41,7 @@ export class AdminComponent implements OnInit {
   ngOnInit() {
     this.apiHost = this.configService.getApiHost();
     this.loadAllUsers();
+    this.show = true;
   }
 
   loadAllUsers() {

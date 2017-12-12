@@ -4,17 +4,39 @@ import { IApplicationUser } from './../shared/interfaces';
 import { ConfigService } from './../shared/utils/config.service';
 import { NotificationService } from './../shared/utils/notification.service';
 import { DataService } from './../shared/services/data.service';
-import { Component, OnInit } from '@angular/core';
 import { ItemsService } from '../shared/utils/items.service';
+import { Component, OnInit, ViewChild, ViewContainerRef, trigger, state, style, transition, animate } from '@angular/core';
 
 @Component({
   selector: 'app-user',
-  templateUrl: './user.component.html'
+  templateUrl: './user.component.html',
+  animations: [
+    trigger('easeInOut', [
+      transition(':enter', [
+        style({
+          opacity: 0
+        }),
+        animate("1s ease-in-out", style({
+          opacity: 1
+        }))
+      ]),
+      transition(':leave', [
+        style({
+          opacity: 1
+        }),
+        animate("1s ease-in-out", style({
+          opacity: 0
+        }))
+      ])
+    ])
+  ]
 })
+
 export class UserComponent implements OnInit {
   apiHost: string;
   userProfile: IApplicationUser;
   selectedUserLoaded: boolean = false;
+  show: boolean = false;
 
   constructor(private dataService: DataService,
               private notificationService: NotificationService,
@@ -25,6 +47,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.apiHost = this.configService.getApiHost();
     this.loadUserProfile();
+    this.show = true;
   }
 
   loadUserProfile() {

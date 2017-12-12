@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, trigger, state, style, transition, animate } from '@angular/core';
 import { IStudent, IStudentDetails, Pagination, PaginatedResult } from './../shared/interfaces';
 import { ConfigService } from './../shared/utils/config.service';
 import { NotificationService } from './../shared/utils/notification.service';
@@ -10,8 +10,21 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-students',
-  templateUrl: './student-list.component.html'
+  templateUrl: './student-list.component.html',
+  animations: [    
+    trigger('flyInOut', [
+      transition(':enter', [
+        style({transform: 'translateX(-100%)'}),
+        animate(500, style({transform: 'translateX(0)'}))
+      ]),
+      transition(':leave', [
+        style({transform: 'translateX(0)'}),
+        animate(500, style({transform: 'translateX(100%)'}))
+      ])
+    ])
+  ]
 })
+
 export class StudentListComponent implements OnInit {
   public itemsPerPage: number = 8;
   public totalItems: number = 0;
@@ -29,7 +42,7 @@ export class StudentListComponent implements OnInit {
   ngOnInit() {
     this.apiHost = this.configService.getApiHost();
     this.loadStudents();
-    this.initializeCreateStudent();    
+    this.initializeCreateStudent();
   }
 
   loadStudents() {

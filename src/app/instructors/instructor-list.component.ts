@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef, trigger, state, style, transition, animate } from '@angular/core';
 import { Pagination, PaginatedResult, IInstructor, ICourse, IInstructorDetails, IInstructorEdit } from './../shared/interfaces';
 import { ConfigService } from './../shared/utils/config.service';
 import { NotificationService } from './../shared/utils/notification.service';
@@ -10,8 +10,21 @@ import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-students',
-  templateUrl: './instructor-list.component.html'
+  templateUrl: './instructor-list.component.html',
+  animations: [    
+    trigger('flyInOut', [
+      transition(':enter', [
+        style({transform: 'translateX(-100%)'}),
+        animate(500, style({transform: 'translateX(0)'}))
+      ]),
+      transition(':leave', [
+        style({transform: 'translateX(0)'}),
+        animate(500, style({transform: 'translateX(100%)'}))
+      ])
+    ])
+  ]
 })
+
 export class InstructorListComponent implements OnInit {
   public itemsPerPage: number = 8;
   public totalItems: number = 0;
