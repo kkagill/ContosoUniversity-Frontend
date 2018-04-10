@@ -17,6 +17,7 @@ Referenced [chsakell](https://chsakell.com/2016/06/27/angular-2-crud-modals-anim
 6. Navigate to `http://localhost:4200/`
 
 ** If it is throwing an error related to Angular-CLI version
+
 Follow the steps below in the terminal:
 `npm uninstall --save-dev angular-cli`
 `npm install --save-dev @angular/cli@latest`
