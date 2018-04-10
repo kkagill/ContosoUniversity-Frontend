@@ -12,8 +12,8 @@ Referenced [chsakell](https://chsakell.com/2016/06/27/angular-2-crud-modals-anim
 1. Run the project from ContosoUniversity-Backend (Important)
 2. Clone or download this project
 3. Download [Visual Studio Code](https://code.visualstudio.com/) 
-4. Navigate to File - Open Folder and open this project. 
-5. Open Terminal (Ctrl + `) and run 'ng serve' for a dev server. 
+4. Navigate to 'File - Open Folder' and open this project (make sure the path is ../ContosoUniversity-Frontend-master\ContosoUniversity-Frontend-master
+5. Open Terminal (Ctrl + `) and run 'npm install' then run 'ng serve'. 
 6. Navigate to 'http://localhost:4200/'
 
 ## Login
