@@ -16,9 +16,7 @@ Referenced [chsakell](https://chsakell.com/2016/06/27/angular-2-crud-modals-anim
 5. Open Terminal `View - Integrated Terminal` and run `npm install` then run `ng serve`
 6. Navigate to `http://localhost:4200/`
 
-- If it is throwing an error related to Angular-CLI version
-
-Follow the steps below in the terminal:
+- If it is throwing an error related to Angular-CLI version, follow the steps below in the terminal:
 
 1. `npm uninstall --save-dev angular-cli`
 2. `npm install --save-dev @angular/cli@latest`
